@@ -1,0 +1,176 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentacja do API",
+        "description": "Dokumentacja dla mikro serwisu",
+        "contact": {
+            "name": "Vitalii Tsarov",
+            "email": "dd@fligmax.com"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Pobieranie listy produktów",
+                "description": "Metoda zwraca dane ...",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "Sukcesy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Dodawanie produktu",
+                "description": "Metoda zwraca dane ...",
+                "operationId": "store",
+                "responses": {
+                    "200": {
+                        "description": "Sukcesy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/v1/products/{id}": {
+            "get": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Pełny opis produktu",
+                "description": "Metoda zwraca dane ...",
+                "operationId": "show",
+                "responses": {
+                    "200": {
+                        "description": "Sukcesy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Edycja produktu",
+                "description": "Metoda zwraca dane ...",
+                "operationId": "update",
+                "responses": {
+                    "200": {
+                        "description": "Sukcesy",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Product"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Products"
+                ],
+                "summary": "Usuwanie produktu",
+                "description": "Metoda zwraca dane ...",
+                "operationId": "destroy",
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Product": {
+                "title": "Product",
+                "description": "Product model",
+                "properties": {
+                    "id": {
+                        "title": "ID Produktu",
+                        "description": "Unikalny identyfikator",
+                        "format": "int64",
+                        "example": "1"
+                    },
+                    "title": {
+                        "title": "Nazwa produktu",
+                        "description": "Nazwa produktu",
+                        "type": "string",
+                        "example": "Test Product"
+                    },
+                    "price": {
+                        "title": "Cena produktu",
+                        "description": "Cena produktu",
+                        "type": "number",
+                        "format": "double",
+                        "maximum": "999999999999.99",
+                        "minimum": "0.00",
+                        "example": "100.00"
+                    },
+                    "count": {
+                        "title": "Liczba dostępnych sztuk",
+                        "description": "Liczba dostępnych sztuk",
+                        "type": "integer",
+                        "minimum": "0",
+                        "example": "5"
+                    },
+                    "created_at": {
+                        "title": "Data dodania",
+                        "description": "Data dodania",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2022-03-11 01:27:45"
+                    },
+                    "updated_at": {
+                        "title": "Data ostatniej modyfikacji",
+                        "description": "Data ostatniej modyfikacji",
+                        "type": "string",
+                        "format": "datetime",
+                        "example": "2022-03-11 01:40:45"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Product"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Products",
+            "description": "OPERACJE O PRODUKTACH"
+        }
+    ],
+    "security": [
+        []
+    ]
+}
