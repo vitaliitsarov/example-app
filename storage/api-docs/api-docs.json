@@ -18,6 +18,19 @@
                 "summary": "Pobieranie listy produktów",
                 "description": "Metoda zwraca dane ...",
                 "operationId": "index",
+                "parameters": [
+                    {
+                        "name": "page",
+                        "in": "path",
+                        "description": "Strony produktów",
+                        "required": false,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Sukcesy",
@@ -38,6 +51,15 @@
                 "summary": "Dodawanie produktu",
                 "description": "Metoda zwraca dane ...",
                 "operationId": "store",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductStoreRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Sukcesy",
@@ -60,6 +82,19 @@
                 "summary": "Pełny opis produktu",
                 "description": "Metoda zwraca dane ...",
                 "operationId": "show",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Sukcesy",
@@ -80,6 +115,28 @@
                 "summary": "Edycja produktu",
                 "description": "Metoda zwraca dane ...",
                 "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "$ref": "#/components/schemas/ProductStoreRequest"
+                            }
+                        }
+                    }
+                },
                 "responses": {
                     "200": {
                         "description": "Sukcesy",
@@ -98,8 +155,21 @@
                     "Products"
                 ],
                 "summary": "Usuwanie produktu",
-                "description": "Metoda zwraca dane ...",
+                "description": "Metoda nie zwraca dane ...",
                 "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Product Id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        },
+                        "example": 1
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "Success"
@@ -110,6 +180,28 @@
     },
     "components": {
         "schemas": {
+            "ProductStoreRequest": {
+                "properties": {
+                    "title": {
+                        "description": "title",
+                        "type": "string",
+                        "default": "Tested Product"
+                    },
+                    "price": {
+                        "description": "price",
+                        "type": "number",
+                        "format": "float",
+                        "default": "100.00"
+                    },
+                    "count": {
+                        "description": "count",
+                        "type": "integer",
+                        "format": "int32",
+                        "default": "5"
+                    }
+                },
+                "type": "object"
+            },
             "Product": {
                 "title": "Product",
                 "description": "Product model",

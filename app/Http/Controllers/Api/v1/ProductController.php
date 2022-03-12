@@ -18,7 +18,17 @@ class ProductController extends Controller
      *      tags={"Products"},
      *      summary="Pobieranie listy produktów",
      *      description="Metoda zwraca dane ...",
-     *     
+     *      @OA\Parameter(
+     *        name="page",
+     *        in="path",
+     *        description="Strony produktów",
+     *        @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *        ),
+     *        required=false,
+     *        example=1
+     *     ),
      *     @OA\Response(
      *          response=200,
      *          description="Sukcesy",
@@ -39,7 +49,18 @@ class ProductController extends Controller
      *      tags={"Products"},
      *      summary="Dodawanie produktu",
      *      description="Metoda zwraca dane ...",
-     *     
+	 * 	
+	 * 
+	 *     @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 type="string",
+     *                 ref="#/components/schemas/ProductStoreRequest",
+     *             )
+     *         )
+     *     ),		
+	 * 
      *     @OA\Response(
      *          response=200,
      *          description="Sukcesy",
@@ -61,7 +82,17 @@ class ProductController extends Controller
      *      tags={"Products"},
      *      summary="Pełny opis produktu",
      *      description="Metoda zwraca dane ...",
-     *     
+     *     @OA\Parameter(
+     *        name="id",
+     *        in="path",
+     *        description="Product Id",
+     *        @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *        ),
+     *        required=true,
+     *        example=1
+     *     ),
      *     @OA\Response(
      *          response=200,
      *          description="Sukcesy",
@@ -82,7 +113,26 @@ class ProductController extends Controller
      *      tags={"Products"},
      *      summary="Edycja produktu",
      *      description="Metoda zwraca dane ...",
-     *     
+     *     @OA\Parameter(
+     *        name="id",
+     *        in="path",
+     *        description="Product Id",
+     *        @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *        ),
+     *        required=true,
+     *        example=1
+     *     ),
+	 * 	   @OA\RequestBody(
+     *         @OA\MediaType(
+     *             mediaType="application/x-www-form-urlencoded",
+     *             @OA\Schema(
+     *                 type="string",
+     *                 ref="#/components/schemas/ProductStoreRequest",
+     *             )
+     *         )
+     *     ),	
      *     @OA\Response(
      *          response=200,
      *          description="Sukcesy",
@@ -103,8 +153,18 @@ class ProductController extends Controller
      *      operationId="destroy",
      *      tags={"Products"},
      *      summary="Usuwanie produktu",
-     *      description="Metoda zwraca dane ...",
-     *     
+     *      description="Metoda nie zwraca dane ...",
+     *     @OA\Parameter(
+     *        name="id",
+     *        in="path",
+     *        description="Product Id",
+     *        @OA\Schema(
+     *           type="integer",
+     *           format="int64"
+     *        ),
+     *        required=true,
+     *        example=1
+     *     ),
      *     @OA\Response(
      *          response=200,
      *          description="Success",

@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @OA\Schema()
+ */
 class ProductStoreRequest extends FormRequest
 {
     /**
@@ -16,10 +19,10 @@ class ProductStoreRequest extends FormRequest
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
+	/**
+     * @OA\Property(type="string", default="Tested Product", description="title", property="title"),
+     * @OA\Property(type="number", format="float", default="100.00", description="price", property="price"),
+     * @OA\Property(type="integer", format="int32", default="5", description="count", property="count"),
      */
     public function rules()
     {
